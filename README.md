@@ -16,3 +16,11 @@ Run the example with:
 
     python3 simultaneous_stepper.py
 
+Set the flask environment variables:
+
+    export FLASK_APP=server
+    export FLASK_DEBUG=1
+
+Run the flask server with:
+
+    flask run
