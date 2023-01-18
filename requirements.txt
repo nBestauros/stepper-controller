@@ -8,8 +8,14 @@ adafruit-circuitpython-requests==1.12.11
 adafruit-circuitpython-typing==1.8.3
 Adafruit-PlatformDetect==3.38.0
 Adafruit-PureIO==1.1.9
+click==8.1.3
+Flask==2.2.2
+itsdangerous==2.1.2
 Jetson.GPIO==2.0.20
+Jinja2==3.1.2
+MarkupSafe==2.1.2
 pyftdi==0.54.0
 pyserial==3.5
 pyusb==1.2.1
 typing_extensions==4.4.0
+Werkzeug==2.2.2

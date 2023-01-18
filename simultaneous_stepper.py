@@ -8,7 +8,7 @@ from adafruit_motorkit import MotorKit
 kit = MotorKit(i2c=board.I2C())
 
 class MotorMover:
-    def movemotor(self, steps, direction, style):
+    def __movemotor__(self, steps, direction, style):
         #print(direction)
         for i in range(steps):
             self.stepper.onestep(direction=direction, style=style)
@@ -19,7 +19,7 @@ class MotorMover:
             self.current_thread.terminate()
             self.stepper.release()
         #print("declaring thread")
-        self.current_thread = Process(target=self.movemotor, args=(
+        self.current_thread = Process(target=self.__movemotor__, args=(
                 steps,
                 direction,
                 style,
@@ -37,21 +37,17 @@ class MotorMover:
     def __del__(self):
         self.stepper.release()
 
+if __name__ == '__main__':
+    st1 = MotorMover(kit.stepper1)
+    st2 = MotorMover(kit.stepper2)
 
-
-
-st1 = MotorMover(kit.stepper1)
-st2 = MotorMover(kit.stepper2)
-
-#print("calling move on st1")
-st1.move(10000, STEPPER.FORWARD, STEPPER.DOUBLE)
-sleep(2)
-st1.move(5000, STEPPER.BACKWARD, STEPPER.DOUBLE)
-#print("right after move on st1")
-#print("calling move on st2")
-st2.move(600, STEPPER.BACKWARD, STEPPER.DOUBLE)
-#print("right after move on st2")
-st1.stepper.release()
-st2.stepper.release()
-
-exit()
+    #print("calling move on st1")
+    st1.move(10000, STEPPER.FORWARD, STEPPER.DOUBLE)
+    sleep(2)
+    st1.move(5000, STEPPER.BACKWARD, STEPPER.DOUBLE)
+    #print("right after move on st1")
+    #print("calling move on st2")
+    st2.move(600, STEPPER.BACKWARD, STEPPER.DOUBLE)
+    #print("right after move on st2")
+    st1.stepper.release()
+    st2.stepper.release()
