@@ -10,8 +10,9 @@ Once venv is created, activate the venv by running:
 
 Install the requirements from requirements.txt:
 
-    pip install -r requirements.txt
+    pip3 install -r requirements.txt
+    
+Run the example with:
 
-
-
+    python3 simultaneous_stepper.py
 
